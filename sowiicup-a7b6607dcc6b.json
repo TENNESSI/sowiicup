@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sowiicup",
+  "private_key_id": "a7b6607dcc6bf5673bb15e25cb5ab71cc9fadc58",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDtL0ZVsnDE02s3\nxElIAz0RncMLpkYPLbLTMQk+k5ULY+m5NzbvQx2K6f28jHqUiLqYbUYfbdNao4xE\nxtNfGAWVEvViyCoLj40YM4AtvHvBlkqRQLfAAa1e8qDVkbLKqCn/eP1GqBXoBKw4\nb1rLkJIJk9cz1pqwglbLp5uL3YwG7l2p0rpRZ7FgEaFMQGpjevUw1061wU5tj3MH\n4DqmqOuZFdd39NfiUaHab5vc18EP/+BIwUU5tMzZmwc8Edzy9Cy5lXct2c0uuFBT\nRHeN1bfau03gdmS1yo25geNhJke4YiPEULHZvDsnmJz34GoCh7vPmfcMAkQsSNT8\n29+B+I6tAgMBAAECggEAEEtIX3BGB3uHuNnK9//C9QAby2PVmcrXp2MNwccFPPZU\n8uSsaTT45VdsV0TmUehvuzN8lwGmPKqSIxJuqHB/x604/tuF6evnc0NseZfif5rZ\nzg8+YFotJSHxcyKSgBIb6oFPEwjOknUpuKnLuMLaiX5m0Rib4Wbe3BhMWwgyC7K4\nDwLZMU/Vo1DLfCz1hJYFLSkYsMO2jCHmBrJYdVkZ5VT/FMHzTu4YmzDY01uEjQFm\nd1DtwLokBaQPFRyFoHKT+LaoaUn6qeMyaFx5ZJVd1UAWef2LjkEgAk6zgSMpzb95\nrPZAjtDGQ1bHJMuDhO6pF67e0TOfETurFe2mfrhgeQKBgQD7ZYiI2pqsdj3alZZq\nLyGIkNNWzKKU+QcIlrVSMaVqwJmt1T9/shih9O02ZS4StD01147ZjLgKguGz/S4M\n38i2lDZ5SISPplcBSNxH8gOXtP+hL/TiunxE70S4ii8eB0PdH2NG4q42Wx9uDGy+\nwD6F+iGSgUQwLIZh5+WRkcdctQKBgQDxhx7PspaMuvMafCEgbXamXuxWTpCG8YeK\nJoupWF3panOyA+GQX5B91yBW7Y7DS8Vs1fWs7a+2mGSlsqbfjo8984aH+GMwJlFm\nQ8zUKNkx+xBXUsGHrdoBAev7NstTqPFjk1jwmPXR9YKUmKdv0HvX1pTHwmXt2p3F\nSEsv8AAdGQKBgDEQzQgg2mVkoofiADxzPHFCCu16/RRkUjob6AHFzMo8EwJ5h24t\n3V7mxdGDB+4AnZ2/l5LgQx9SEikl9fHvT2ZLISKkw7KhvYNzrAKiuo7GdcoI6RvD\nV/PAW0JFPhL3SgiDUsYIAgZ73HOHG0ZTkSBnBFxqvFtGpWfAce7qa+WtAoGAf80V\nuqUvEGxj8qG4DaaeX85elBSiWSU4qRtYT1VY7AfODGYNVw2aMVxB2n19S02uu7ZD\ndyuWDLJ6n0r3DdgrZ4aSqyP9qB6+d7Rsj97FfrLwpKQ/j4Gol1vi+Fy4Hh6JDD2N\nlFH70Qtt+x8DiiDxRvZeZ40vzjodvaRRVJ5UERECgYEA1jNvAsn3YpRqKsQdWMYm\ndrnQO9fALbvvbfn1Ri3yyEz9s6QKKgHoVfF+M/bor1dHzrrya+nmnCI78r4/TkRB\ny14SzB3Ol5zCArtFkFhnanrxRSkjTqzl/ownfRJQ9OEk1iZ290bCAtfjBEcwUPax\nAwmGQEJb6PWj9faRuia//50=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sowiicup@sowiicup.iam.gserviceaccount.com",
+  "client_id": "100145311773595895543",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sowiicup%40sowiicup.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
