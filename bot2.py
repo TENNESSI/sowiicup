@@ -53,7 +53,7 @@ async def sendmsg(message: types.Message):
 				data = [twitch, dotaname, mmr, dotaid, pos, captain, f'https://ru.dotabuff.com/players/{dotaid}', 'нет']
 				print(f'Получена анкета от @{message.from_user.username} {message.from_user.id}')
 
-				with open(f'players/{message.from_user.id}.txt', 'w', encoding="utf-8") as file:
+				with open(f'players/forms/{message.from_user.id}.txt', 'w', encoding="utf-8") as file:
 					file.writelines(f'{item}\n' for item in data)
 					print(f'Данные от @{message.from_user.username} {message.from_user.id} во временном файле, ожидают подтверждения')
 
@@ -61,13 +61,16 @@ async def sendmsg(message: types.Message):
 										   destination=f'images/{message.from_user.id}.jpg')
 				print(f'Фото {message.from_user.id}.jpg успешно загружено')
 
-				# await bot.send_photo(chat_id=ADMIN_ID_3, photo=message.photo[-1].file_id,
-				# 					 caption=f"1){twitch}\n2){dotaname}\n3){mmr}\n4){dotaid}\n5){pos}\n6){captain}\nhttps://ru.dotabuff.com/players/{dotaid}",
-				# 					 reply_markup=GiveAddUsersKeyboard(message.from_user.id))
-				await bot.send_photo(chat_id=ADMIN_ID_2, photo=message.photo[-1].file_id,
+				await bot.send_photo(chat_id=ADMIN_ID_3, photo=message.photo[-1].file_id,
 									 caption=f"1){twitch}\n2){dotaname}\n3){mmr}\n4){dotaid}\n5){pos}\n6){captain}\nhttps://ru.dotabuff.com/players/{dotaid}",
 									 reply_markup=GiveAddUsersKeyboard(message.from_user.id))
+				# await bot.send_photo(chat_id=ADMIN_ID_2, photo=message.photo[-1].file_id,
+				# 					 caption=f"1){twitch}\n2){dotaname}\n3){mmr}\n4){dotaid}\n5){pos}\n6){captain}\nhttps://ru.dotabuff.com/players/{dotaid}",
+				# 					 reply_markup=GiveAddUsersKeyboard(message.from_user.id))
 				# await bot.send_photo(chat_id=ADMIN_ID, photo=message.photo[-1].file_id,
+				# 					 caption=f"1){twitch}\n2){dotaname}\n3){mmr}\n4){dotaid}\n5){pos}\n6){captain}\nhttps://ru.dotabuff.com/players/{dotaid}",
+				# 					 reply_markup=GiveAddUsersKeyboard(message.from_user.id))
+				# await bot.send_photo(chat_id=1303013337, photo=message.photo[-1].file_id,
 				# 					 caption=f"1){twitch}\n2){dotaname}\n3){mmr}\n4){dotaid}\n5){pos}\n6){captain}\nhttps://ru.dotabuff.com/players/{dotaid}",
 				# 					 reply_markup=GiveAddUsersKeyboard(message.from_user.id))
 				await message.answer('жди пока примут')
@@ -80,7 +83,9 @@ async def sendmsg(message: types.Message):
 async def cancel(call: CallbackQuery):
 	user_id = call.data.replace('add_','')
 
-	with open(f'players/{user_id}.txt', 'r', encoding="utf-8") as file:
+	old_caption = call.message.caption
+	caption = old_caption + f'\n\n✅ПРИНЯТА (@{call.from_user.username})'
+	with open(f'players/forms/{user_id}.txt', 'r', encoding="utf-8") as file:
 		data = file.readlines()
 		data[:] = [item.strip() for item in data]
 
@@ -89,13 +94,17 @@ async def cancel(call: CallbackQuery):
 
 	await bot.send_message(user_id, 'Ваша анкета принята!')
 	await call.answer(f'Пользователь {user_id} добавлен.', show_alert=True)
+	await bot.edit_message_caption(chat_id=call.message.chat.id, message_id=call.message.message_id, caption = caption)
 
 @dp.callback_query(F.data.startswith('noadd_'))
 async def cancel(call: CallbackQuery):
 	user_id = call.data.replace('noadd_','')
+	old_caption = call.message.caption
+	caption = old_caption + f'\n\n🚫ОТКЛОНЕНА (@{call.from_user.username})'
 	print(f'Пользователь {user_id} НЕ добавлен в гугл таблицу')
 	await bot.send_message(user_id, 'Ваша анкета отклонена!')
 	await call.answer(f'Пользователь {user_id} отклонён.', show_alert=True)
+	await bot.edit_message_caption(chat_id=call.message.chat.id, message_id=call.message.message_id, caption = caption)
 
 @dp.callback_query(F.data.startswith('ban_'))
 async def cancel(call: CallbackQuery):
