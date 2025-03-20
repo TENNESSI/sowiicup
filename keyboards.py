@@ -1,9 +1,15 @@
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram import types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, ReplyKeyboardMarkup
+from numpy.ma.core import resize
 
-def StartKeyboard():
-	pass
+
+def GiveStartKeyboard():
+	startbutton = KeyboardButton(text='Зарегистрироваться')
+	kb = ReplyKeyboardMarkup(resize_keyboard=True, keyboard=[
+		[startbutton]
+	])
+	return kb
 
 def GiveAddUsersKeyboard(id):
 	# print(len(",".join(data).encode('utf-8')))
