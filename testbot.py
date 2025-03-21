@@ -43,7 +43,7 @@ title = table.worksheets()[0].title
 worksheet = table.worksheet(title)
 
 def is_banned(user_id):
-	with open('players/banlist.txt', 'r') as file:
+	with open('players/banlist.txt', 'r', encoding='utf-8') as file:
 		banlist = file.readlines()
 		banlist = [item.strip() for item in banlist]
 	if str(user_id) in banlist:
@@ -54,7 +54,7 @@ def is_banned(user_id):
 @dp.message(Command("banlist"))
 async def cmd_get_banlist(message: types.Message):
 	if message.from_user.id in admins:
-		with open('players/banlist.txt', 'r') as file:
+		with open('players/banlist.txt', 'r', encoding='utf-8') as file:
 			banlist = file.readlines()
 			banlist = [item.strip() for item in banlist]
 		await message.answer('\n'.join(banlist))
@@ -75,7 +75,7 @@ async def cmd_start(message: types.Message):
 		if len(message.text.split(' '))==2:
 			user_id = message.text.replace('/unban ', '')
 
-			with open('players/banlist.txt', 'r') as file:
+			with open('players/banlist.txt', 'r', encoding='utf-8') as file:
 				old_banlist = file.readlines()
 				old_banlist = [item.strip() for item in old_banlist]
 			new_banlist = []
@@ -84,7 +84,7 @@ async def cmd_start(message: types.Message):
 					if i != user_id:
 						new_banlist.append(i)
 
-				with open('players/banlist.txt', 'w') as file:
+				with open('players/banlist.txt', 'w', encoding='utf-8') as file:
 					for i in new_banlist:
 						file.write(i+'\n')
 				os.remove(f'players/forms/{user_id}.txt')
@@ -177,7 +177,7 @@ async def get_twitch(message: types.Message, state: FSMContext):
 				str(message.from_user.id)]
 		print(f'Получена анкета от @{message.from_user.username} {message.from_user.id}')
 
-		with open(f'players/forms/{message.from_user.id}.txt', 'w', encoding="utf-8") as file:
+		with open(f'players/forms/{message.from_user.id}.txt', 'w', encoding='utf-8') as file:
 			file.writelines(f'{item}\n' for item in data)
 			print(
 				f'Данные от @{message.from_user.username} {message.from_user.id} во временном файле, ожидают подтверждения')
@@ -195,7 +195,7 @@ async def get_twitch(message: types.Message, state: FSMContext):
 			msg_ids.append(msg.message_id)
 			chat_ids.append(str(admin))
 
-		with open(f'players/forms/{message.from_user.id}.txt', 'a', encoding="utf-8") as file:
+		with open(f'players/forms/{message.from_user.id}.txt', 'a', encoding='utf-8') as file:
 			file.write('_'.join([str(i) for i in msg_ids]) + "\n")
 			file.write('_'.join(chat_ids))
 
@@ -213,7 +213,7 @@ async def cancel(call: CallbackQuery):
 	old_caption = call.message.caption
 	caption = old_caption + f'\n\n✅ПРИНЯТА (@{call.from_user.username})'
 
-	with open(f'players/forms/{user_id}.txt', 'r', encoding="utf-8") as file:
+	with open(f'players/forms/{user_id}.txt', 'r', encoding='utf-8') as file:
 		data = file.readlines()
 		data[:] = [item.strip() for item in data]
 	chat_ids = [int(i) for i in data[-1].split('_')]
@@ -233,14 +233,14 @@ async def cancel(call: CallbackQuery):
 	user_id = call.data.replace('noadd_','')
 	old_caption = call.message.caption
 	caption = old_caption + f'\n\n🚫ОТКЛОНЕНА (@{call.from_user.username})'
-	with open(f'players/forms/{user_id}.txt', 'r', encoding="utf-8") as file:
+	with open(f'players/forms/{user_id}.txt', 'r', encoding='utf-8') as file:
 		data = file.readlines()
 		data[:] = [item.strip() for item in data]
 	chat_ids = [int(i) for i in data[-1].split('_')]
 	msg_ids = [int(i) for i in data[-2].split('_')]
 
 	print(f'Пользователь {user_id} НЕ добавлен в гугл таблицу')
-	await bot.send_message(user_id, 'Ваша анкета отклонена!')
+	await bot.send_message(user_id, 'Ваша анкета отклонена!', reply_markup=GiveStartKeyboard())
 	await call.answer(f'Пользователь {user_id} отклонён.', show_alert=True)
 	for i in range(len(chat_ids)):
 		await bot.edit_message_caption(chat_id=chat_ids[i], message_id=msg_ids[i], caption = caption)
@@ -255,7 +255,7 @@ async def cancel(call: CallbackQuery):
 	with open(f'players/banlist.txt', 'a') as file:
 		file.write(user_id+'\n')
 
-	with open(f'players/forms/{user_id}.txt', 'r', encoding="utf-8") as file:
+	with open(f'players/forms/{user_id}.txt', 'r', encoding='utf-8') as file:
 		data = file.readlines()
 		data[:] = [item.strip() for item in data]
 	chat_ids = [int(i) for i in data[-1].split('_')]
