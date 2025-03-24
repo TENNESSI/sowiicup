@@ -190,7 +190,7 @@ async def get_twitch(message: types.Message, state: FSMContext):
 		chat_ids = []
 		for admin in admins:
 			msg = await bot.send_photo(chat_id=admin, photo=user['screen'],
-									   caption=f"1) {user['twitch']}\n2) {user['dotaname']}\n3) {user['mmr']}\n4) {user['dotaid']}\n5) {user['pos']}\n6) {user['captain']}\nhttps://ru.dotabuff.com/players/{user['dotaid']}",
+									   caption=f"1) {user['twitch']}\n2) {user['dotaname']}\n3) {user['mmr']}\n4) {user['dotaid']}\n5) {user['pos']}\n6) {user['captain']}\nhttps://ru.dotabuff.com/players/{user['dotaid']}\n@{message.from_user.username}",
 									   reply_markup=GiveAddUsersKeyboard(message.from_user.id))
 			msg_ids.append(msg.message_id)
 			chat_ids.append(str(admin))
