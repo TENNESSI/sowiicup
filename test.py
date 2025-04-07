@@ -2,7 +2,7 @@ from gspread import Client, Spreadsheet, Worksheet, service_account
 from config import table_id
 
 
-data = ['tinkertwitcher','penis','1236','123709213','2-3','нет']
+data = ['tinkertwitcher','wqweqwe','1236','123709213','2-3','нет']
 
 def client_init_json() -> Client:
     return service_account(filename='sowiicup-a7b6607dcc6b.json')
